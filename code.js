@@ -3,6 +3,7 @@ let currentPlayer;
 let score = { 1: 0, 2: 0 }; 
 let clickedTiles = [];
 let allowClick = true;
+let ShownCards = [];
 let totalPairs;
 let foundPairs = 0;  
 let currentLevelType;
@@ -119,6 +120,8 @@ function loadPuzzle(size) {
     document.getElementById("start_screen").style.display = "none";
     document.getElementById("Levels").style.display = "none";
     draw_puzzle(my_puzzle);
+    let table = document.getElementById("puzzle_container");
+    table.style.userSelect = "None";
 }
 
 
@@ -184,6 +187,8 @@ function generate_puzzle_html(puzzle) {
 function PuzzleGame(row, col) {
     if (!allowClick) return; 
 
+    if (ShownCards.includes(my_puzzle[row][col])) return; 
+
     const td = document.querySelector(`tr:nth-child(${row + 1}) td:nth-child(${col + 1})`);
     const span = td.querySelector('span');
 
@@ -193,8 +198,9 @@ function PuzzleGame(row, col) {
     clickedTiles.push(key);
     span.classList.remove('hiddenText');
 
+
     // controleert of 2 geklikte tegels inhoudelijk overeenkomen 
-    if (clickedTiles.length === 2) {
+    if (clickedTiles.length === 2) {    
         allowClick = false; 
         const [firstKey, secondKey] = clickedTiles;
         const [firstRow, firstCol] = firstKey.split('-').map(Number);      // Haal de rij- en kolomindexen uit de 'clickedTiles' 
@@ -204,6 +210,7 @@ function PuzzleGame(row, col) {
         const firstTile = document.querySelector(`tr:nth-child(${firstRow + 1}) td:nth-child(${firstCol + 1}) span`);
         const secondTile = document.querySelector(`tr:nth-child(${secondRow + 1}) td:nth-child(${secondCol + 1}) span`);
 
+
         if (my_puzzle[firstRow][firstCol] === my_puzzle[secondRow][secondCol]) {
             score[currentPlayer]++;
             foundPairs++;
@@ -212,7 +219,8 @@ function PuzzleGame(row, col) {
             if (foundPairs === totalPairs) {
                 declareWinner(); 
             }
-
+            ShownCards.push(my_puzzle[firstRow][firstCol]);
+            ShownCards.push(my_puzzle[secondRow][secondCol]);
             clickedTiles = [];
             allowClick = true;
         } else {
