@@ -6,7 +6,8 @@ let allowClick = true;
 let totalPairs;
 let foundPairs = 0;  
 let currentLevelType;
-
+let CTeller1;
+let CTeller2;
 // Functie om het voorbeeldlevel-scherm te openen
 function VLscherm() { 
     document.getElementById("start_screen").style.display = "none";
@@ -31,8 +32,16 @@ function loadPuzzle(size) {
             ["B", "C", "A"]
         ];
         totalPairs = 3;
-        document.getElementById("teller1_2x3").style.display = "block";
-        document.getElementById("teller2_2x3").style.display = "block";
+        CTeller1 =  document.getElementById("teller1_2x3");
+        CTeller2 = document.getElementById("teller2_2x3")
+        CTeller1.style.display = "block";
+        CTeller2.style.display = "block";
+        if (currentPlayer == 1){
+            CTeller1.style.fontWeight = "900";
+        } else {
+            CTeller2.style.fontWeight = "900";
+        }
+
     } else if (size === 'level2') {
         my_puzzle = [
             ["A", "B", "C", "C"],
@@ -40,8 +49,16 @@ function loadPuzzle(size) {
             ["E", "F", "F", "D"]
         ];
         totalPairs = 6;
-        document.getElementById("teller1_3x4").style.display = "block";
-        document.getElementById("teller2_3x4").style.display = "block";
+        CTeller1 =  document.getElementById("teller1_3x4");
+        CTeller2 = document.getElementById("teller2_3x4")
+        CTeller1.style.display = "block";
+        CTeller2.style.display = "block";
+        if (currentPlayer == 1){
+            CTeller1.style.fontWeight = "900";
+        } else {
+            CTeller2.style.fontWeight = "900";
+        }
+
     } else if (size === 'level3') {
         my_puzzle = [
             ["A", "B", "C", "C", "G"],
@@ -50,25 +67,53 @@ function loadPuzzle(size) {
             ["I", "J", "G", "I", "J"]
         ];
         totalPairs = 10;
-        document.getElementById("teller1_4x5").style.display = "block";
-        document.getElementById("teller2_4x5").style.display = "block";
+        CTeller1 =  document.getElementById("teller1_4x5");
+        CTeller2 = document.getElementById("teller2_4x5")
+        CTeller1.style.display = "block";
+        CTeller2.style.display = "block";
+        if (currentPlayer == 1){
+            CTeller1.style.fontWeight = "900";
+        } else {
+            CTeller2.style.fontWeight = "900";
+        }
 
     // randomlevels d.m.v een willekeurige puzzle generator (zie functie onderaan)
     } else if (size === '2x3') {
         my_puzzle = generateRandomPuzzle(2, 3); 
         totalPairs = 3;
-        document.getElementById("teller1_2x3").style.display = "block";
-        document.getElementById("teller2_2x3").style.display = "block";
+        CTeller1 =  document.getElementById("teller1_2x3");
+        CTeller2 = document.getElementById("teller2_2x3")
+        CTeller1.style.display = "block";
+        CTeller2.style.display = "block";
+        if (currentPlayer == 1){
+            CTeller1.style.fontWeight = "900";
+        } else {
+            CTeller2.style.fontWeight = "900";
+        }
     } else if (size === '3x4') {
         my_puzzle = generateRandomPuzzle(3, 4);
         totalPairs = 6;
-        document.getElementById("teller1_3x4").style.display = "block";
-        document.getElementById("teller2_3x4").style.display = "block";
+        CTeller1 =  document.getElementById("teller1_3x4");
+        CTeller2 = document.getElementById("teller2_3x4")
+        CTeller1.style.display = "block";
+        CTeller2.style.display = "block";
+        if (currentPlayer == 1){
+            CTeller1.style.fontWeight = "900";
+        } else {
+            CTeller2.style.fontWeight = "900";
+        }
     } else if (size === '4x5') {
         my_puzzle = generateRandomPuzzle(4, 5);
         totalPairs = 10;
-        document.getElementById("teller1_4x5").style.display = "block";
-        document.getElementById("teller2_4x5").style.display = "block";
+        CTeller1 =  document.getElementById("teller1_4x5");
+        CTeller2 = document.getElementById("teller2_4x5")
+        CTeller1.style.display = "block";
+        CTeller2.style.display = "block";
+        if (currentPlayer == 1){
+            CTeller1.style.fontWeight = "900";
+        } else {
+            CTeller2.style.fontWeight = "900";
+        }
     }
 
     document.getElementById("start_screen").style.display = "none";
@@ -176,7 +221,14 @@ function PuzzleGame(row, col) {
                 if (secondTile) secondTile.classList.add('hiddenText');
                 clickedTiles = [];
                 currentPlayer = currentPlayer === 1 ? 2 : 1; 
-                alert(`Het is nu de beurt van speler ${currentPlayer}`);
+                if (currentPlayer == 1){
+                    CTeller2.style.fontWeight = "normal";
+                    CTeller1.style.fontWeight = "900";
+                }else{
+                    CTeller1.style.fontWeight = "normal";
+                    CTeller2.style.fontWeight = "900";
+                }
+
                 allowClick = true;
             }, 800);
         }
