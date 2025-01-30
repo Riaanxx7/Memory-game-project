@@ -3,22 +3,20 @@ body {
     background-image: url('https://media.istockphoto.com/id/1182467056/vector/cute-meadow-area-with-clouds-stars-and-mountains.jpg?s=612x612&w=0&k=20&c=SwM7C0pbLBDmJRKXJLwGfFVPB2Tl5boff8kYmQOs3mg=');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    background-attachment: fixed;
 }
 
-
 header {
-    padding: 30px;
     text-align: center;
     font-size: 25px;
     color: white;
     font-family: monospace;
-    position: absolute;
-    top: 50px; 
+    position: fixed;
+    top: 100px; 
     left: 420px; 
+    aspect-ratio: 16 / 9; 
+
+    
   }
 h2 {
     text-align: center;
@@ -26,26 +24,30 @@ h2 {
     font-size: 30px;
     color: white;
     font-style: bold;
-    position: absolute; 
+    position: fixed;
     top: 200px;
-    left: 400px; 
-
+    left: 380px; 
+    aspect-ratio: 16 / 9; 
 }
+
 .bottomleft {
-    position: absolute;
-    bottom: 200px;
+    position: fixed;
+    top: 310px;
     left: 260px;
+    aspect-ratio: 16 / 9; 
 }
 
 .bottommid {
-    position: absolute;
-    bottom: 200px;
+    position: fixed;
+    top: 310px;
     left: 560px; 
+
 }   
 .bottomright {
-    position: absolute;
-    bottom: 200px;
+    position: fixed;
+    top: 310px;
     left: 860px; 
+
 }
 
 button {
@@ -92,15 +94,12 @@ td {
 }
 
 .loccount1_2x3 {
-    position: absolute;
-    right: 670px;
-    bottom: 360px;
-
+    top: 190px;
+    left: 550px;
 }    
 .loccount2_2x3 {
-    position: absolute;
-    right: 600px;
-    bottom: 360px;
+    top: 190px;
+    right: 550px;
 }
 .loccount1_3x4 {
     position: absolute;
@@ -114,15 +113,13 @@ td {
     bottom: 280px;
 }
 .loccount1_4x5 {
-    position: absolute;
-    right: 670px;
-    bottom: 200px;
-
+    top: 340px;
+    left: 550px;
 }    
+
 .loccount2_4x5 {
-    position: absolute;
-    right: 600px;
-    bottom: 200px;
+    top: 345px;
+    right: 560px;
 }
 .locRestart_Random_2x3 {
     position: absolute;
@@ -159,11 +156,14 @@ td {
     -webkit-text-fill-color: orange;
   font-size: 30px;
   font-family: Arial;
+  position: fixed; 
 }
 .count2 {
     -webkit-text-fill-color: aqua;
 font-size: 30px;
 font-family: Arial;
+position: fixed; 
+
 }
 
 
@@ -176,11 +176,13 @@ font-family: Arial;
     border-radius: 6px; 
 
 }
+
 .locVL {
-    position: absolute;
-    bottom: 80px;
+    position: fixed;
+    top: 430px;
     left: 490px; 
 }
+
 .RestartButton {
     background-color: rgb(222, 91, 3);
     -webkit-text-fill-color: white
